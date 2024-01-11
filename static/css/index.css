@@ -116,12 +116,12 @@ body {
 }
 
 .results-carousel .item {
-  margin: 5px;
+  margin: 25px;
   overflow: hidden;
   border: 1px solid #bbb;
   border-radius: 10px;
-  padding: 0;
-  font-size: 0;
+  padding: 4;
+  font-size: 4;
 }
 
 .results-carousel video {
