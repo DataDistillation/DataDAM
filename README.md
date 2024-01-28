@@ -30,11 +30,11 @@ For reproducibility, we outline our associated hyperparameters below:
 
 We provide saved tensors of the dataset and frozen evaluation models trained on the respective distilled dataset. (Remaining Datasets/Models will be added soon)
 
-| Distilled Dataset  | Frozen Model  | IPC | Acc |
-| ------------ | :--------------: | :--------------: | :--------------: |
-| [CIFAR-10]() | [ConvNet]() | 1 | - |
-| [CIFAR-10]() | [ConvNet]() | 10 | - |
-| [CIFAR-10]() | [ConvNet]() | 50 | - |
+| Synthetic Initialization (Recommended)  | Distilled Dataset  | Frozen Model  | IPC | Acc |
+| ------------ | :--------------: | :--------------: | :--------------: | :--------------: |
+| [Images](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC1_images.pt)/[Labels](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC1_labels.pt) | [CIFAR-10]() |  [ConvNet]() | 1 | - |
+| [Images](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC10_images.pt)/[Labels](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC10_labels.pt) | [CIFAR-10]() | [ConvNet]() | 10 | - |
+| [Images](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC50_images.pt)/[Labels](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC40_labels.pt)| [CIFAR-10]() | [ConvNet]() | 50 | - |
 <!-- | [CIFAR-100]() | [ConvNet]() | 1 | - |
 | [CIFAR-100]() | [ConvNet]() | 10 | - |
 | [CIFAR-100]() | [ConvNet]() | 50 | - |
