@@ -272,7 +272,7 @@ def get_network(model, channel, num_classes, im_size=(32, 32)):
         net = ConvNet(channel=channel, num_classes=num_classes, net_width=net_width, net_depth=net_depth, net_act=net_act, net_norm='batchnorm', net_pooling=net_pooling, im_size=im_size)
     
     elif model == 'ConvNet128IN': # Higher Resolution
-        net_depth=5
+        net_depth=6
         net = ConvNet(channel=channel, num_classes=num_classes, net_width=net_width, net_depth=net_depth, net_act=net_act, net_norm='batchnorm', net_pooling=net_pooling, im_size=im_size)
         
     elif model == 'LeNet':
@@ -350,7 +350,8 @@ def get_network(model, channel, num_classes, im_size=(32, 32)):
 
     gpu_num = torch.cuda.device_count()
     
-    net = nn.DataParallel(net)
+    if gpu_num > 1:
+        net = nn.DataParallel(net)
     net = net.cuda()
 
     return net
@@ -419,7 +420,7 @@ def epoch(mode, dataloader, net, optimizer, criterion, args, aug):
 
 
 
-def evaluate_synset(it_eval, net, images_train, labels_train, testloader, args):
+def evaluate_synset(it_eval, net, images_train, labels_train, testloader, args, skip=False):
     net = net.to(args.device)    
     
     images_train = images_train.to(args.device)
@@ -435,13 +436,17 @@ def evaluate_synset(it_eval, net, images_train, labels_train, testloader, args):
 
     start = time.time()
     acc_test = 0
-    for ep in tqdm.tqdm(range(Epoch+1)):
-        loss_train, acc_train = epoch('train', trainloader, net, optimizer, criterion, args, aug = True)
-        if ep in lr_schedule:
-            lr *= 0.1
-            optimizer = torch.optim.SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=0.0005)
+    loss_train = 0
+    time_train = 0
+    acc_train = 0
+    if not skip:
+        for ep in tqdm.tqdm(range(Epoch+1)):
+            loss_train, acc_train = epoch('train', trainloader, net, optimizer, criterion, args, aug = True)
+            if ep in lr_schedule:
+                lr *= 0.1
+                optimizer = torch.optim.SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=0.0005) 
+        time_train = time.time() - start
         
-    time_train = time.time() - start
     loss_test, acc_test = epoch('test', testloader, net, optimizer, criterion, args, aug = False)
     print('%s Evaluate_%02d: epoch = %04d train time = %d s train loss = %.6f train acc = %.4f, test acc = %.4f' % (get_time(), it_eval, Epoch, int(time_train), loss_train, acc_train, acc_test))
 
