@@ -9,6 +9,7 @@ Researchers have long tried to minimize training costs in deep learning while ma
 
 ## File Tree
 This folder contains all neccesary code files and supplemental material for the main paper.
+```
 .
 ├── main_DataDAM.py         # Source Code for reproducing DataDAM results on behncmark datasets and IPCs
 ├── networks.py             # Defines all relevant network architectures, including cross-arch models
@@ -17,7 +18,7 @@ This folder contains all neccesary code files and supplemental material for the 
 ├── requirements.txt        # Lists all related Python packages neccessary for reproducing our model results
 ├── Supplementary.pdf       # Supplementary pdf for our main paper -- DataDAM
 └── README.md
-
+```
 
 
 
