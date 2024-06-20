@@ -13,6 +13,7 @@ This folder contains all neccesary code files and supplemental material for the 
 ├── main_DataDAM.py         # Source Code for reproducing DataDAM results on behncmark datasets and IPCs
 ├── networks.py             # Defines all relevant network architectures, including cross-arch models
 ├── utils.py                # Defines all utility functions required for any task or ablation in main paper, inlcuding our attention module
+├── distill_test_model.py   # Script to test the frozen models
 ├── requirements.txt        # Lists all related Python packages neccessary for reproducing our model results
 ├── Supplementary.pdf       # Supplementary pdf for our main paper -- DataDAM
 └── README.md
@@ -28,26 +29,5 @@ For reproducibility, we outline our associated hyperparameters below:
 
 ## Distilled Datasets & Frozen Evaluation Models
 
-We provide saved tensors of the dataset and frozen evaluation models trained on the respective distilled dataset. (Remaining Datasets/Models will be added soon)
-
-| Synthetic Initialization (Recommended)  | Distilled Dataset  | Frozen Model  | IPC | Acc |
-| ------------ | :--------------: | :--------------: | :--------------: | :--------------: |
-| [Images](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC1_images.pt)/[Labels](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC1_labels.pt) | [CIFAR-10]() |  [ConvNet]() | 1 | - |
-| [Images](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC10_images.pt)/[Labels](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC10_labels.pt) | [CIFAR-10]() | [ConvNet]() | 10 | - |
-| [Images](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC50_images.pt)/[Labels](/DataDAM/Initial_Synthetic_Dataset/CIFAR10_IPC40_labels.pt)| [CIFAR-10]() | [ConvNet]() | 50 | - |
-<!-- | [CIFAR-100]() | [ConvNet]() | 1 | - |
-| [CIFAR-100]() | [ConvNet]() | 10 | - |
-| [CIFAR-100]() | [ConvNet]() | 50 | - |
-| [Tiny ImageNet]() | [ConvNet]() | 1 | - |
-| [Tiny ImageNet]() | [ConvNet]() | 10 | - |
-| [Tiny ImageNet]() | [ConvNet]() | 50 | - |
-| [ImageNet-1K]() | [ConvNet]() | 1 | - |
-| [ImageNet-1K]() | [ConvNet]() | 2 | - |
-| [ImageNet-1K]() | [ConvNet]() | 10 | - |
-| [ImageNet-1K]() | [ConvNet]() | 50 | - |
-| [ImageNette]() | [ConvNet]() | 1 | - |
-| [ImageNette]() | [ConvNet]() | 10 | - |
-| [ImageWoof]() | [ConvNet]() | 1 | - |
-| [ImageWoof]() | [ConvNet]() | 10 | - |
-| [ImageSquack]() | [ConvNet]() | 1 | - |
-| [ImageSquack]() | [ConvNet]() | 10 | - | -->
+We provide saved tensors of the dataset and frozen evaluation models trained on the respective distilled dataset on our HuggingFace Page: https://huggingface.co/datasets/uoft-dsp-lab/DataDAM
+Additionally these frozen models can be tested with "distill_test_model.py"
